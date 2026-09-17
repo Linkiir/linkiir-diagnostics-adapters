@@ -1,0 +1,9 @@
+{
+  "format": "linkiir.catalog",
+  "format_version": 1,
+  "id": "lkdx",
+  "name": "Linkiir Diagnostics Adapters",
+  "publisher": "Linkiir Inc",
+  "description": "Catalog of laboratory, imaging and medical device adapters",
+  "min_grid_version": ""
+}
