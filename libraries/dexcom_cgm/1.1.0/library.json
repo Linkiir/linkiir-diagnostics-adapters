@@ -1,0 +1,11 @@
+{
+  "name": "dexcom_cgm",
+  "description": "Dexcom CGM connectivity for the native Linkiir scripting API. Handles the three-legged OAuth authorization Dexcom requires, refreshes the rotating token pair, and reads dataRange and estimated glucose values over linkiir.link.web. Includes a single-row SQLite token store, because a user-authorized grant has to outlive the request that obtained it. Every call returns result or nil plus a classified error, and nothing raises. Connectivity only: readings are returned exactly as Dexcom sends them, with no cursor policy and no mapping into another system's model.",
+  "version": "1.1.0",
+  "origin": {
+    "catalog": "linkiir-diagnostics-adapters",
+    "name": "dexcom_cgm",
+    "version": "1.0.0",
+    "installed_at": "2026-10-28T20:11:14+00:00"
+  }
+}
