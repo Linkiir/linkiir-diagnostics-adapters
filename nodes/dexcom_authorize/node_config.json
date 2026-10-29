@@ -83,5 +83,101 @@
     "dexcom_cgm": "1.0.0"
   },
   "config_version": 1,
-  "version": "1.0.0"
+  "version": "1.0.1",
+  "template_origin": {
+    "catalog": "linkiir-diagnostics-adapters",
+    "template_id": "group:linkiir-diagnostics-adapters/dexcom_authorize",
+    "commit": "b374b2576ad89cbb21cd7991b3f48172188568f0",
+    "version": "1.0.0",
+    "linked": false,
+    "files": [
+      "dexcom_cgm/dexcom_cgm.lua",
+      "dexcom_cgm/dexcom_cgm_config.lua",
+      "dexcom_cgm/dexcom_cgm_http.lua",
+      "main.lua"
+    ],
+    "field_defs": [
+      {
+        "label": "Route Path",
+        "field_type": "string",
+        "description": "URL path this endpoint listens on, unique within the project. The HTTP port comes from the project's HTTP Server settings.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Worker Count",
+        "field_type": "number",
+        "description": "Parallel Lua VMs handling concurrent requests. One is plenty for an authorization page.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Environment",
+        "field_type": "list",
+        "description": "Which Dexcom environment to talk to: sandbox or production. They are separate hosts with separate credentials, so a production key against sandbox fails in a way that looks like a bad secret.",
+        "list_options": [
+          "sandbox",
+          "production"
+        ],
+        "depends_on": null
+      },
+      {
+        "label": "Client ID",
+        "field_type": "string",
+        "description": "The Client ID from your Dexcom application registration. Left blank on purpose: fill it in after import.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Client Secret",
+        "field_type": "password",
+        "description": "The Client Secret from your Dexcom application registration. Stored encrypted and decrypted only when the script reads it.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Redirect URI",
+        "field_type": "string",
+        "description": "Where Dexcom sends the browser after sign-in. Must match the Dexcom registration exactly, character for character, and must be https.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Base URL Override",
+        "field_type": "string",
+        "description": "Leave blank to use the host implied by Environment. Set a full base URL only to point at a mock or a proxy.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Token Store Path",
+        "field_type": "string",
+        "description": "SQLite file holding the authorized token pair, relative to the Linkiir working directory. Dexcom only offers a user-authorized grant, so the tokens have to outlive the request that obtained them.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Request Timeout",
+        "field_type": "number",
+        "description": "Seconds to wait for a Dexcom response.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Verify TLS",
+        "field_type": "bool",
+        "description": "Verify Dexcom's certificate. Leave on; turn off only against a local mock.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Live Mode",
+        "field_type": "bool",
+        "description": "When off, requests are prepared but never sent, and calls report themselves as simulated. Lets an imported adapter be inspected before it touches a real account.",
+        "list_options": null,
+        "depends_on": null
+      }
+    ]
+  },
+  "min_grid_version": "1.2.0"
 }
